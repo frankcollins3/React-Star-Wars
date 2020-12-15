@@ -1,24 +1,34 @@
-import logo from './logo.svg';
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import React, { useState, useEffect } from 'react';
+import axios from 'axios'
+import { Route, Switch } from 'react-router-dom';
+
+import Spinner from './components/UI/spinner';
+import './style'
 import './App.css';
 
-function App() {
+class App extends Component {
+  state = {
+    starships: []
+  }
+  
+  async componentDidMount() {
+    if (!this.state.starships || !this.state.starships.
+  }
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <Switch>
+          <Route path='/' exact render={() => <Starship starships={starship}/> } />
+          <Route path='/starship' exact component={StarshipResults} />
+          <Route path='/starship' render={({location}) => 
+              <Starship location={location}/>
+            }/>
+        </Switch>
+      </div>
+    </BrowserRouter>
   );
 }
 
